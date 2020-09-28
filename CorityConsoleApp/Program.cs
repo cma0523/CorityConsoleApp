@@ -14,7 +14,6 @@ namespace CorityConsoleApp
                 Console.WriteLine("Start processing file.");
                 var fileProcessor = new FileProcessor();
                 var status = fileProcessor.OutputTextFile(fileName);
-                if()
                 Console.WriteLine("File has been processed,");
             }
         }
