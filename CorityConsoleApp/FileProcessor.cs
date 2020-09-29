@@ -8,24 +8,21 @@ namespace CorityConsoleApp
 {
     public class FileProcessor
     {
-        private readonly string directory = "C:/temp/";
-        public bool OutputTextFile(string fileName)
+        private readonly string directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public bool TextFileOutput(string fileName)
         {
             string text;
             try
             {
-                //Create a new folder if it exists
-                //If the folder exists already, the line will be ignored.
-                Directory.CreateDirectory(directory);
-                var fullpath = directory + fileName;
+                var fullpath = Path.Combine(directory, fileName);
                 if (!File.Exists(fullpath)) return false;
                 //Read entire text
                 using (var sr = new StreamReader(fullpath))
                 {
                     text = sr.ReadToEnd();
                 }
-                //Write entire text
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(directory, fileName + ".out"), true))
+                //Write same text to output file, overwrite the text if file exists
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(directory, fileName + ".out"), false))
                 {
                     outputFile.WriteLine(text);
                 }
@@ -39,8 +36,5 @@ namespace CorityConsoleApp
             }
 
         }
-
-
-
     }
 }

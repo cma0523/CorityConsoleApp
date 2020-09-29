@@ -9,12 +9,12 @@ namespace CorityConsoleApp
         {
             while (true)
             {
-                Console.WriteLine("Please enter the file name, if you want to exit the program, please enter ");
+                Console.WriteLine("Please enter the file name.");
                 var fileName = Console.ReadLine();
                 Console.WriteLine("Start processing file.");
                 var fileProcessor = new FileProcessor();
-                var status = fileProcessor.OutputTextFile(fileName);
-                Console.WriteLine("File has been processed,");
+                var status = fileProcessor.TextFileOutput(fileName);
+                Console.WriteLine(status ? "File has been processed." : "File cannot be processed.");
             }
         }
 
