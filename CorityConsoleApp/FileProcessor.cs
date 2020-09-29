@@ -16,6 +16,7 @@ namespace CorityConsoleApp
             {
                 var fullpath = Path.Combine(directory, fileName);
                 if (!File.Exists(fullpath)) return false;
+                if (!Path.GetExtension(fullpath).Equals(".txt", StringComparison.OrdinalIgnoreCase)) return false;
                 //Read entire text
                 using (var sr = new StreamReader(fullpath))
                 {
